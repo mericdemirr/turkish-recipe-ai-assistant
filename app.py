@@ -31,7 +31,7 @@ st.write("Elinizdeki malzemeleri yazın, size uygun tarifleri önerelim!")
 # Malzeme girişi
 user_ingredients = st.text_area(
     "Hangi malzemeler var?",
-    placeholder="Örnek: kıyma, soğan, domates, patates, biber...",
+    placeholder="Örnek: kıyma, soğan (en fazla iki ürün girebilirsiniz)",
     height=100
 )
 
@@ -71,3 +71,4 @@ if st.button("Tarifleri Bul 🚀") and user_ingredients:
             
         except Exception as e:
             st.error(f"Bir hata oluştu: {str(e)}")
+
