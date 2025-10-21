@@ -21,8 +21,8 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 @st.cache_resource
 def load_data():
     recipes = load_and_split_recipes("tarifler.txt")
-    model, index = create_vector_database(recipes)
-    return recipes, model, index
+    vectorizer, tfidf_matrix = create_vector_database(recipes)
+    return recipes, vectorizer, tfidf_matrix
 
 # Arayüz
 st.title("🧑‍🍳 Malzemelerinle Yemek Tarifi Bul")
@@ -40,10 +40,10 @@ if st.button("Tarifleri Bul 🚀") and user_ingredients:
     with st.spinner("En uygun tarifler aranıyor..."):
         try:
             # Veriyi yükle
-            recipes, model, index = load_data()
+            recipes, vectorizer, tfidf_matrix = load_data()
             
             # Benzer tarifleri bul
-            similar_recipes = search_similar_recipes(user_ingredients, model, index, recipes)
+            similar_recipes = search_similar_recipes(user_ingredients, vectorizer, tfidf_matrix, recipes)
             
             # Gemini için prompt hazırla
             prompt = f"""
@@ -61,7 +61,7 @@ if st.button("Tarifleri Bul 🚀") and user_ingredients:
             3. Başka yorum ekleme
             """
             
-            # Gemini'ye sor
+            # Gemini'ye sor - 2.5-flash kullan
             model_genai = genai.GenerativeModel("gemini-2.5-flash")
             response = model_genai.generate_content(prompt)
             
