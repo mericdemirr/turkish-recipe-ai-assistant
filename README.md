@@ -111,17 +111,17 @@ Veri seti bulunamadı:
 - tarifler.txt dosyasının proje klasöründe olduğundan emin olun
 - Orijinal veri setini Hugging Face’ten indirebilirsiniz
 
-Lisans
+## Lisans
 Bu proje eğitim amaçlıdır. Veri seti Hugging Face'ten alınmış olup orijinal lisans koşulları geçerlidir.
 
-Katkıda Bulunma
+## Katkıda Bulunma
 Sorularınız veya önerileriniz için issue açabilirsiniz.
 
-Canlı Demo
+## Canlı Demo
 Canlı Uygulama Linki:
 https://turkish-recipe-ai-assistant-c4qs8lgwlf492aj6bndfeh.streamlit.app/
 
-Örnek kullanım:
+## Örnek kullanım:
 kıyma, soğan
 “Tarifleri Bul” butonuna tıklayın ve AI’nın önerisini izleyin.
 
